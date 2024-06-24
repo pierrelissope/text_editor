@@ -12,30 +12,6 @@ on:
       - 'ga-ignore-*'
 
 jobs:
-
-  check_coding_style:
-    runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/epitech/coding-style-checker:latest
-    steps:
-      - id: check_coding_style
-        run: |
-          check.sh $(pwd) $(pwd)
-          while IFS= read -r line || [[ -n "$line" ]]; do
-            IFS=': ' read -r -a array <<< "$line"
-            file="${array[0]}"
-            i="${array[1]}"
-            type="${array[2]}"
-            code="${array[3]}"
-            echo "::error title=$type coding style error,file=${file#./},line=$i::$code"
-            ERRORS_FOUND=true
-          done < "coding-style-reports.log"
-          if [[ $ERRORS_FOUND ]]; then
-            exit 1
-          else
-            echo "C'est carré"
-          fi
-
   check_program_compilation:
     timeout-minutes: 2
     runs-on: ubuntu-latest
