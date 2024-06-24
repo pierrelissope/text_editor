@@ -27,7 +27,7 @@ CPPFLAGS = -iquote ./$(INCLUDE_DIR)
 CRITFLAGS = -lcriterion
 GCOVRFLAGS = --coverage
 
-NAME = $(BIN_DIR)/calculator
+NAME = $(BIN_DIR)/text_editor
 TEST_NAME = $(BIN_DIR)/unit_tests
 
 all: $(NAME)
